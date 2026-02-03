@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>乐可为，全球首创小干扰RNA降胆固醇药物</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,user-scalable=no">
+    <meta name="TopicID" content="QXD_TOPIC_20250720_001">
+    <meta name="ChapterID" content="QXD_CHAPTER_20250720_001.01">
+    <meta name="PageID" content="QXD_PAGE_20250720_001.01.01">
+    <meta name="mcc_code" content="">
+    <meta name="key_message" content="乐可为，全球首创小干扰RNA降胆固醇药物">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/toast.css">
+    <link rel="stylesheet" href="../../css/animate.css">
+
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            overscroll-behavior: contain; /* 阻止边界弹性滚动 */
+            -webkit-overflow-scrolling: touch; /* 优化iOS滚动体验 */
+        }
+        a{font-size: 0.25rem;color: #333;font-style: normal;text-decoration: none;font-family: 微软雅黑}
+        .bd img{width: 100%;}
+        .active ul{
+            display: flex;
+            justify-content: space-around;
+            margin-top: 0.71rem;
+        }
+        .active ul>li{
+            width: 12.5%;
+        }
+        .tip{
+            position: fixed;
+            bottom: -0.5rem;
+            padding: 0.1rem 0rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            transition: all 0.3s;
+            width: 100%;
+            height: 0.8rem;
+            line-height: 0.4rem;
+            font-size: 0.25rem;
+            text-align: center;
+            background: white;
+            color:#333;
+            opacity: 0;
+            z-index: 9998;
+        }
+        /* 显示时的样式 */
+        .show {
+            bottom: 0rem;
+            opacity: 0.8;
+        }
+        #box{
+            position: relative;
+            font-size: 0px;
+        }
+        
+        .ft_tips {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 400;
+        }
+        
+    </style>
+    <script src="../../js/jquery-2.1.0.js"></script>
+    <script src="../../js/public.js?id=1"></script>
+    <script src="../../js/toast.js"></script>
+    <script src="../../js/image-modal.js?id=2"></script>
+    <script src="https://qa.wecomfoundation.novartis.com.cn/content-lib/static/behaviorTracking.js"></script>
+</head>
+<body>
+ <div class="bd" id="box">
+    <img src="images/1.jpg?id=1" alt="">
+    
+
+<script>
+    // 全局配置：当前页面是否启用滑动跳转
+    const enableSwipeDownJump = true;  
+    const enableSwipeUpJump = true;    
+
+    // 图片弹窗初始化
+    const modal = new ImageModal({
+        backdropBlur: false,
+        closeOnEscape:false,
+        backdropOpacity:0.5,
+        onBeforeOpen: function() {console.log('模态框即将打开');},
+        onAfterClose: function() {console.log('模态框已关闭');}
+    });
+
+    const tip = document.querySelector('.tip');
+    let isShowing = false;
+    let startY = 0;
+    let isTouching = false;
+
+    function showTip() {if(!enableSwipeUpJump) return; isShowing = true; tip.classList.add('show');}
+    function hideTip() {isShowing = false; tip.classList.remove('show');}
+
+    function enableSwipeJump() {
+        document.addEventListener('touchstart', (e) => {
+            if (touchLock) return;
+            startY = e.touches[0].pageY;
+            isTouching = true;
+        }, { passive: false });
+
+
+        document.addEventListener('touchend', e => {
+            if (!isTouching || touchLock) {
+                isTouching = false;
+                return;
+            }
+
+            touchLock = true;
+            const endY = e.changedTouches[0].pageY;
+            const deltaY = startY - endY;
+
+            if (isPageBottom() && deltaY > 15) {
+                hideTip();
+                setTimeout(() => {
+                    window.location.href = "../page2/index2.html";
+                }, 50);
+            } else {
+                if (deltaY < -10) {
+                    hideTip();
+                }
+            }
+
+            setTimeout(() => {
+                touchLock = false;
+                isTouching = false;
+            }, 100);
+        });
+
+        document.addEventListener('touchcancel', (e) => {
+            isTouching = false;
+            touchLock = false;
+        });
+    }
+
+    enableSwipeJump();
+</script>
+
+</body>
+</html>
