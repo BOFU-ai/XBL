@@ -17,8 +17,8 @@
         html,body{
             width: 100%;
             height: 100%;
-            overscroll-behavior: contain; /* 阻止边界弹性滚动 */
-            -webkit-overflow-scrolling: touch; /* 优化iOS滚动体验 */
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
         }
         a{font-size: 0.25rem;color: #333;font-style: normal;text-decoration: none;font-family: 微软雅黑}
         .bd img{width: 100%;}
@@ -47,7 +47,6 @@
             opacity: 0;
             z-index: 9998;
         }
-        /* 显示时的样式 */
         .show {
             bottom: 0rem;
             opacity: 0.8;
@@ -58,18 +57,18 @@
         }
         /* 手指按钮样式 */
         .bd .click-area {
-    position: absolute;
-    width: 2.7rem;
-    height: 2rem;
-    cursor: pointer;
-    z-index: 99;
-    background: rgba(255, 0, 0, 0.7);
-    -webkit-tap-highlight-color: transparent;
-    pointer-events: auto;
-    touch-action: manipulation;
-    user-select: none;
-    display: block;
-}
+            position: absolute;
+            width: 2.7rem;
+            height: 2rem;
+            cursor: pointer;
+            z-index: 99;
+            background: rgba(255, 0, 0, 0.7);
+            -webkit-tap-highlight-color: transparent;
+            pointer-events: auto;
+            touch-action: manipulation;
+            user-select: none;
+            display: block;
+        }
         .bd .j1{right:4rem;top:5.7rem}
         .bd .j2{right:4rem;top:8.1rem}
         .bd .j3{right:4rem;top:10.4rem}
@@ -95,23 +94,49 @@
             70% { transform: scale(1); }
         }
         /* 目录菜单样式 */
-        .menu{position: fixed;bottom: 1.5rem;right:0rem;background-color: #FFFFFF;width:0.9rem;height:0.81rem;border-radius: 0.5rem 0rem 0rem 0.5rem;display: flex;flex-direction: row;justify-content: right;box-shadow: -6px 5px 8px rgba(0,0,0,0.2); transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s ease;z-index: 9999;}
+        .menu{
+            position: fixed;bottom: 1.5rem;right:0rem;
+            background-color: #FFFFFF;
+            width:0.9rem;height:0.81rem;
+            border-radius: 0.5rem 0rem 0rem 0.5rem;
+            display: flex;flex-direction: row;justify-content: right;
+            box-shadow: -6px 5px 8px rgba(0,0,0,0.2); 
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s ease;
+            z-index: 9999;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
         .menu.open{
-    position: fixed;bottom: 1.5rem;right:0rem;background-color: #FFFFFF;
-    width:1.35rem;
-    min-height: 2.3rem;
-    height: auto;
-    border-radius: 0.2rem 0rem 0rem 0.2rem;
-    display: flex;
-    justify-content: center;
-}
-        .menu.open .list{display: flex;flex-direction: column;width: 100%;margin-top: 0.05rem;opacity: 0;transition: opacity 0.5s ease}
+            position: fixed;bottom: 1.5rem;right:0rem;
+            background-color: #FFFFFF;
+            width:1.35rem;
+            min-height: 2.3rem;
+            height: auto;
+            border-radius: 0.2rem 0rem 0rem 0.2rem;
+            display: flex;
+            justify-content: center;
+        }
+        .menu.open .list{
+            display: flex;flex-direction: column;
+            width: 100%;margin-top: 0.05rem;
+            opacity: 0;transition: opacity 0.5s ease
+        }
         .menu.open .list.active{opacity: 1}
-        .menu.open .list a{font-size:0.19rem;width: 100%;height: 0.2rem;display: block;color:#a52132;padding: 0.1rem 0.1rem 0.15rem 0.15rem;font-weight: bold;display: flex;justify-content: left;align-items: center;
+        .menu.open .list a{
+            font-size:0.19rem;
+            width: 100%;
+            display: flex;align-items: center;
+            color:#a52132;padding: 0.1rem 0.1rem 0.15rem 0.15rem;
+            font-weight: bold;
             background-image:url('../../images/line.png');
             background-position:0px bottom;
             background-repeat: no-repeat;
             background-size: contain;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            border: none;
+            text-indent: 0;
+            margin: 0;
         }
         .menu.open .list .mbg.hover{
             background-image:url('../../images/line2.png');
@@ -120,8 +145,18 @@
             background-size: contain;
         }
         .menu.open .list .mbg:last-child a{background-image: none}
-        .menu.open .list i{background: url("../../images/arrow.png") no-repeat 0px 0px;width:0.11rem;height: 0.12rem;background-size: cover;display: block;margin-right:0.05rem}
-        .menu .con{width:0.48rem;height:0.43rem;margin-top: 0.2rem;margin-right: 0.1rem;cursor: pointer;}
+        .menu.open .list i{
+            background: url("../../images/arrow.png") no-repeat 0px 0px;
+            width:0.11rem;height: 0.12rem;
+            background-size: cover;display: block;
+            margin-right:0.05rem;
+            flex-shrink: 0;
+        }
+        .menu .con{
+            width:0.48rem;height:0.43rem;
+            margin-top: 0.2rem;margin-right: 0.1rem;
+            cursor: pointer;
+        }
         /* 目录子项样式  */
         .menu.open .list .sub-item {
             padding-left: 0.2rem;
@@ -130,18 +165,18 @@
             font-size: 0.18rem !important;
             padding-top: 0.06rem !important;
             padding-bottom: 0.06rem !important;
-            height: auto !important;
             background-image: none !important;
         }
         .menu.open .list .sub-item i {
-    background: none !important;
-    width: 0.05rem !important;
-    height: 0.05rem !important;
-    border-radius: 50% !important;
-    background-color: #a52132 !important;
-    margin-right: 0.08rem !important;
-}
-
+            background: none !important;
+            width: 0.04rem !important;
+            height: 0.04rem !important;
+            border-radius: 50% !important;
+            background-color: #a52132 !important;
+            margin-right: 0.08rem !important;
+            margin-top: 0.04rem !important;
+            flex-shrink: 0;
+        }
         .ft_tips {
             position: absolute;
             bottom: -50px;
@@ -154,30 +189,30 @@
         }
         /* 弹窗层级样式 */
         .image-modal-overlay,
-.modal-overlay,
-.img-modal-mask {
-    z-index: 99999 !important;
-    pointer-events: auto !important;
-    background: rgba(0,0,0,0.7) !important;
-}
-.image-modal-overlay, .image-modal-mask, .modal-overlay, .modal-mask {
-    z-index: 999999 !important;
-    pointer-events: auto !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-}
-.image-modal-content, .image-modal-box, .modal-content, .modal-box {
-    z-index: 9999999 !important;
-    pointer-events: auto !important;
-}
-.image-modal-close, .modal-close, .img-close, .close-btn {
-    z-index: 99999999 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
+        .modal-overlay,
+        .img-modal-mask {
+            z-index: 99999 !important;
+            pointer-events: auto !important;
+            background: rgba(0,0,0,0.7) !important;
+        }
+        .image-modal-overlay, .image-modal-mask, .modal-overlay, .modal-mask {
+            z-index: 999999 !important;
+            pointer-events: auto !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+        .image-modal-content, .image-modal-box, .modal-content, .modal-box {
+            z-index: 9999999 !important;
+            pointer-events: auto !important;
+        }
+        .image-modal-close, .modal-close, .img-close, .close-btn {
+            z-index: 99999999 !important;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
     </style>
     <script src="../../js/jquery-2.1.0.js"></script>
     <script src="../../js/public.js?id=1"></script>
@@ -211,8 +246,6 @@
             <div class="mbg"><a href="../page7/index.html"><i></i>STAMP机制 </a></div>
         </div>
     </div>
-
-    
 
 <script>
     // 全局配置
@@ -253,7 +286,6 @@
     }
 });
 
-
     $('.menu').on('click', function(e) {
         e.stopPropagation();
         if($(".menu").hasClass("open")){
@@ -276,13 +308,14 @@
         }
     });
     $('.menu .list a').on('click', function(e) {
+        e.preventDefault();
         $(".menu").removeClass("open");
         $(".list").removeClass("active");
         $(".list").hide();
         setTimeout(() => {$(".con").show();},200);
         const targetHref = $(this).attr('href');
         if(targetHref && targetHref !== 'javascript:;'){
-            setTimeout(() => {window.location.href = targetHref;}, 100);
+            window.location.href = targetHref;
         }
     });
 </script>
